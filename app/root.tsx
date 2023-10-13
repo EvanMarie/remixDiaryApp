@@ -1,5 +1,4 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import { cssBundleHref } from "@remix-run/css-bundle";
+import { ChakraProvider, Flex } from "@chakra-ui/react";
 import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
@@ -9,9 +8,21 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import CustomTheme from "./styles/customTheme";
 
 export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  {
+    rel: "preconnect",
+    href: "https://fonts.googleapis.com",
+  },
+  {
+    rel: "preconnect",
+    href: "https://fonts.gstatic.com",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap",
+  },
 ];
 
 export default function App() {
@@ -24,8 +35,10 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <ChakraProvider>
-          <Outlet />
+        <ChakraProvider theme={CustomTheme}>
+          <Flex w="100vw" h="100vh" justify="center">
+            <Outlet />
+          </Flex>
         </ChakraProvider>
         <ScrollRestoration />
         <Scripts />
