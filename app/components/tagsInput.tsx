@@ -3,7 +3,6 @@ import React, { useState, useEffect, KeyboardEvent, ChangeEvent } from "react";
 import {
   HStack,
   Input,
-  Badge,
   IconButton,
   VStack,
   Wrap,
@@ -13,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { AiOutlineClose } from "react-icons/ai/index.js";
 import { InputStyles, radius, shadow } from "~/styles/customTheme";
+import TagBadge from "./tagBadge";
 
 interface TagsInputProps {
   onTagsChange: (tags: string[]) => void;
@@ -89,16 +89,7 @@ const TagsInput: React.FC<TagsInputProps> = ({ onTagsChange, tags }) => {
           </Flex>
         )}
         {localTags.map((tag, index) => (
-          <Badge
-            key={index}
-            bg="purple.200"
-            fontSize="1.2rem"
-            fontWeight="600"
-            borderRadius="lg"
-            px={1}
-            pl={2}
-            textTransform="lowercase"
-          >
+          <TagBadge key={index}>
             <HStack w="100%" justify="space-between">
               <Text>{tag}</Text>
               <Tooltip label={`Remove tag: "${tag}"`} bg="gray.600">
@@ -113,7 +104,7 @@ const TagsInput: React.FC<TagsInputProps> = ({ onTagsChange, tags }) => {
                 />
               </Tooltip>
             </HStack>
-          </Badge>
+          </TagBadge>
         ))}
       </Wrap>
     </VStack>

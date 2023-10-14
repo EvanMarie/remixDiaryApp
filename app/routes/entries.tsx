@@ -1,4 +1,12 @@
 import { Text, VStack } from "@chakra-ui/react";
+import EntriesList from "~/components/entriesList";
+
+const TestEntry = {
+  id: "2023-10-14T14:03:35.268Z",
+  title: "Test Entry",
+  entry: "This is a test entry",
+  tags: ["test", "entry"],
+};
 
 export default function Entries() {
   return (
@@ -6,7 +14,8 @@ export default function Entries() {
       <Text fontSize="4xl" fontWeight="bold">
         My Diary Entries
       </Text>
-      <Text fontSize="xl">ENTRIES</Text>
+      {/* <EntryCard entry={TestEntry} /> */}
+      <EntriesList entries={[TestEntry]} />
     </VStack>
   );
 }

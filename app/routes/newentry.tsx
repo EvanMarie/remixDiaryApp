@@ -20,7 +20,7 @@ import {
 import CollapsibleStack from "../components/collapsableStack";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai/index.js";
 import TagsInput from "~/components/tagsInput"; // adjust the import path as necessary
-import { getStoredEntries, storeEntries } from "~/data/entries";
+import { Entry, getStoredEntries, storeEntries } from "~/data/entries";
 import { redirect } from "@remix-run/node";
 
 interface NewEntryProps {}
@@ -37,15 +37,11 @@ export async function action({ request }: { request: Request }) {
     throw new Error("Title and content must be strings");
   }
 
-  const entryData: {
-    id: string;
-    title: string; // We're now sure it's a string
-    tags?: string[];
-    content: string; // We're now sure it's a string
-  } = {
+  const entryData: Entry = {
     id: new Date().toISOString(), // set the ID here
+    tags: [],
     title: rawEntryData.title, // TypeScript now knows this is a string
-    content: rawEntryData.content, // TypeScript now knows this is a string
+    entry: rawEntryData.content, // TypeScript now knows this is a string
   };
 
   if (rawEntryData.tags && typeof rawEntryData.tags === "string") {
@@ -62,7 +58,7 @@ export async function action({ request }: { request: Request }) {
     " |  tags: ",
     entryData.tags,
     " |  content: ",
-    entryData.content
+    entryData.entry
   );
 
   const existingEntries = await getStoredEntries();
