@@ -40,7 +40,7 @@ export default function App() {
         <ChakraProvider theme={CustomTheme}>
           <Flex w="100vw" h="100vh" justify="center">
             <Navigation />
-            <Flex w="100%" pt="60px" justify="center">
+            <Flex w="100%" pt="70px" justify="center">
               <Outlet />
             </Flex>
           </Flex>

@@ -70,6 +70,7 @@ const TagsInput: React.FC<TagsInputProps> = ({ onTagsChange, tags }) => {
       border="1px solid"
       borderColor="gray.600"
       maxW="600px"
+      alignSelf="flex-end"
     >
       <Input
         value={inputValue}

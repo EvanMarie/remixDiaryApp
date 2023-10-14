@@ -8,25 +8,25 @@ import { largeShadow } from "~/styles/customTheme";
 export default function Navigation() {
   return (
     <HStack
-      spacing={6}
+      spacing={4}
       position="fixed"
-      h="60px"
+      h="70px"
       bg="gray.900"
       shadow={largeShadow}
       w="100%"
       justify="center"
       align="center"
     >
-      <CustomButton to="/" leftIcon={<RiHomeLine />}>
+      <CustomButton h="100%" to="/" leftIcon={<RiHomeLine />}>
         Home
       </CustomButton>
-      <CustomButton to="/entries" leftIcon={<IoDocumentsOutline />}>
+      <CustomButton h="100%" to="/entries" leftIcon={<IoDocumentsOutline />}>
         Entries
       </CustomButton>
-      <CustomButton to="/newentry" leftIcon={<BsJournalPlus />}>
+      <CustomButton h="100%" to="/newentry" leftIcon={<BsJournalPlus />}>
         New
       </CustomButton>
-      <CustomButton to="/setup" leftIcon={<BsGearWideConnected />}>
+      <CustomButton h="100%" to="/setup" leftIcon={<BsGearWideConnected />}>
         Setup
       </CustomButton>
     </HStack>

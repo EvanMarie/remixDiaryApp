@@ -21,8 +21,9 @@ export default function CustomButton({
     <Button
       bg={isActive ? "purple.200" : "teal.300"}
       color="gray.900"
-      fontSize={{ base: "1.1rem", md: "1.3rem", lg: "1.4rem" }}
-      p={{ base: 2, sm: 3, md: 4 }}
+      fontSize={{ base: "1.2rem", md: "1.3rem", lg: "1.4rem" }}
+      py={{ base: 2, sm: 3, md: 4 }}
+      px={{ base: 3, sm: 5, md: 6, lg: 7 }}
       onClick={onClick}
       fontWeight="600"
       h="33px"
