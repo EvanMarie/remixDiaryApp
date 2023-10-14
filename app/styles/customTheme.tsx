@@ -49,7 +49,7 @@ const CustomTheme = extendTheme(
           overflowX: "hidden",
           overflowY: "hidden",
           fontFamily: "'Alegreya Sans', sans-serif;",
-          bg: "gray.800",
+          bgGradient: "linear(to-b, gray.700, gray.800, gray.900)",
           color: "gray.100",
           fontSize: "1.3rem",
         },
@@ -59,33 +59,13 @@ const CustomTheme = extendTheme(
             color: "purple.200",
           },
           fontWeight: "600",
-        },
-      },
-
-      components: {
-        Input: {
-          variants: {
-            filled: {
-              field: {
-                bg: "gray.900",
-                color: "white",
-                shadow: "0px 0px 10px rgba(0,0,0,0.7)",
-                fontWeight: "500",
-                _focus: {
-                  borderColor: "aiArt.400",
-                  bg: "aiArt.900",
-                  color: "aiArt.100",
-                },
-                _hover: {
-                  borderColor: "aiArt.400",
-                  bg: "aiArt.900",
-                  color: "aiArt.100",
-                },
-              },
-            },
+          _active: {
+            bg: "purple.200",
           },
         },
       },
+
+      components: {},
     },
   }
 );
@@ -116,21 +96,20 @@ export const InputStyles = {
   variant: "filled",
   rounded: radius,
   bg: "gray.900",
-  w: { base: "375px", sm: "450px", md: "700px" },
+  w: "100%",
+  maxW: "600px",
   color: "gray.50",
-  border: "1px solid",
   shadow: shadow,
   borderColor: "gray.600",
-  borderRadius: "md",
-  focusBorderColor: "gray.600",
+  focusBorderColor: "teal.300",
   _hover: {
     bg: "gray.800",
-    borderColor: "gray.600",
+    borderColor: "teal.300",
     shadow: largeShadow,
   },
   _focus: {
     bg: "gray.800",
-    borderColor: "gray.600",
+    borderColor: "teal.300",
   },
   transition: "all 0.3s ease-in-out",
 };

@@ -1,6 +1,6 @@
 import { IconButton, IconButtonProps } from "@chakra-ui/react";
 import { radius, shadow } from "~/styles/customTheme";
-import { Link } from "@remix-run/react";
+import { NavLink, useLocation } from "@remix-run/react";
 
 interface CustomIconButtonProps extends IconButtonProps {
   addLink?: boolean;
@@ -13,9 +13,11 @@ export default function CustomIconButton({
   onClick,
   ...props
 }: CustomIconButtonProps) {
+  const location = useLocation();
+  const isActive = location.pathname === to;
   const iconButton = (
     <IconButton
-      bg="teal.300"
+      bg={isActive ? "purple.200" : "teal.300"}
       color="gray.900"
       fontSize="1.7rem"
       fontWeight="600"
@@ -31,7 +33,7 @@ export default function CustomIconButton({
   );
 
   if (to) {
-    return <Link to={to}>{iconButton}</Link>;
+    return <NavLink to={to}>{iconButton}</NavLink>;
   }
 
   return iconButton;

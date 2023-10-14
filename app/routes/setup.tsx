@@ -25,10 +25,7 @@ export default function Setup() {
         <Box fontSize="4xl" fontWeight="bold">
           Diary Project
         </Box>
-        <HStack spacing={5}>
-          <CustomButton to="/">Home</CustomButton>
-          <CustomButton to="/entries">My Diary Entries</CustomButton>
-        </HStack>
+
         <HStack w="90%" align="flex-start">
           <VStack w="25%" spacing={3}>
             <Text fontSize="2xl" borderBottom="1px solid">

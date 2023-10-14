@@ -1,6 +1,4 @@
 import { Text, VStack } from "@chakra-ui/react";
-import CustomButton from "~/components/customButton";
-import NewEntry from "~/components/newEntry";
 
 export default function Entries() {
   return (
@@ -8,8 +6,7 @@ export default function Entries() {
       <Text fontSize="4xl" fontWeight="bold">
         My Diary Entries
       </Text>
-      <CustomButton to="/">Home</CustomButton>
-      <NewEntry />
+      <Text fontSize="xl">ENTRIES</Text>
     </VStack>
   );
 }

@@ -9,6 +9,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import CustomTheme from "./styles/customTheme";
+import Navigation from "./components/navigation";
 
 export const links: LinksFunction = () => [
   {
@@ -34,10 +35,14 @@ export default function App() {
         <Meta />
         <Links />
       </head>
+
       <body>
         <ChakraProvider theme={CustomTheme}>
           <Flex w="100vw" h="100vh" justify="center">
-            <Outlet />
+            <Navigation />
+            <Flex w="100%" pt="60px" justify="center">
+              <Outlet />
+            </Flex>
           </Flex>
         </ChakraProvider>
         <ScrollRestoration />

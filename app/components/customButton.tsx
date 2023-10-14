@@ -1,6 +1,6 @@
 import { Button, ButtonProps } from "@chakra-ui/react";
 import { radius, shadow } from "~/styles/customTheme";
-import { Link } from "@remix-run/react";
+import { NavLink, useLocation } from "@remix-run/react";
 
 interface CustomButtonProps extends ButtonProps {
   children: React.ReactNode;
@@ -14,11 +14,15 @@ export default function CustomButton({
   onClick,
   ...props
 }: CustomButtonProps) {
+  const location = useLocation();
+  const isActive = location.pathname === to;
+
   const button = (
     <Button
-      bg="teal.300"
+      bg={isActive ? "purple.200" : "teal.300"}
       color="gray.900"
-      fontSize="1.3rem"
+      fontSize={{ base: "1.1rem", md: "1.3rem", lg: "1.4rem" }}
+      p={{ base: 2, sm: 3, md: 4 }}
       onClick={onClick}
       fontWeight="600"
       h="33px"
@@ -26,6 +30,7 @@ export default function CustomButton({
       shadow={shadow}
       _hover={{
         bg: "purple.200",
+        color: "gray.900",
       }}
       transition="all 0.3s ease-in-out"
       {...props}
@@ -35,7 +40,7 @@ export default function CustomButton({
   );
 
   if (to) {
-    return <Link to={to}>{button}</Link>;
+    return <NavLink to={to}>{button}</NavLink>;
   }
 
   return button;
