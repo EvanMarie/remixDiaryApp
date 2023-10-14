@@ -4,7 +4,8 @@ import EntriesList from "~/components/entriesList";
 const TestEntry = {
   id: "2023-10-14T14:03:35.268Z",
   title: "Test Entry",
-  entry: "This is a test entry",
+  entry:
+    "This is a test entry blah blah blah. What a great day. Yay, I love it!",
   tags: ["test", "entry"],
 };
 
