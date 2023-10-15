@@ -1,7 +1,7 @@
 import { Box, Center, Flex, HStack, Text, VStack } from "@chakra-ui/react";
 import { useLoaderData, useNavigate, useParams } from "@remix-run/react";
 import EditDeleteButtons from "~/components/editDeleteButtons";
-import { useEscapeBack } from "~/components/escapeNav";
+import { useEscapeBack } from "~/utils/escapeNav";
 import FadeIn from "~/components/fadeIn";
 import TagsWrap from "~/components/tagsWrap";
 import { Entry, getStoredEntries } from "~/data/entries";
@@ -44,11 +44,13 @@ export default function ViewEntry() {
       <FadeIn>
         <Flex p={4} w="100%" justify="center">
           <VStack
-            w="100%"
+            w={{ base: "100vw", sm: "100%" }}
+            h={{ base: "100vh", sm: "auto" }}
             maxW="800px"
             minH="400px"
-            maxH="600px"
-            overflowY="auto"
+            // maxH={{ base: "100vh", sm: "600px" }}
+            // overflowY="auto"
+            overflowY="hidden"
             sx={scrollBarStyles}
             bgGradient={darkTealGrad}
             p={4}
@@ -100,7 +102,8 @@ export default function ViewEntry() {
                 <TagsWrap tags={entryTags} />
                 <Box
                   w="100%"
-                  maxH="400px"
+                  px={2}
+                  maxH={{ base: "600px", sm: "400px" }}
                   overflowY="auto"
                   sx={scrollBarStyles}
                 >

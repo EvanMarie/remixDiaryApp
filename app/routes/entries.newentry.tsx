@@ -26,7 +26,7 @@ import TagsInput from "~/components/tagsInput"; // adjust the import path as nec
 import { Entry, getStoredEntries, storeEntries } from "~/data/entries";
 import { redirect } from "@remix-run/node";
 import FadeIn from "~/components/fadeIn";
-import { useEscapeBack } from "~/components/escapeNav";
+import { useEscapeBack } from "~/utils/escapeNav";
 import { BackButton } from "~/components/editDeleteButtons";
 
 interface NewEntryProps {}
@@ -35,7 +35,6 @@ export async function action({ request }: { request: Request }) {
   const formData = await request.formData();
   const rawEntryData = Object.fromEntries(formData);
 
-  // Check if title and content are strings and not File objects
   if (
     typeof rawEntryData.title !== "string" ||
     typeof rawEntryData.content !== "string"
@@ -44,10 +43,10 @@ export async function action({ request }: { request: Request }) {
   }
 
   const entryData: Entry = {
-    id: new Date().toISOString(), // set the ID here
+    id: new Date().toISOString(),
     tags: [],
-    title: rawEntryData.title, // TypeScript now knows this is a string
-    entry: rawEntryData.content, // TypeScript now knows this is a string
+    title: rawEntryData.title,
+    entry: rawEntryData.content,
   };
 
   if (rawEntryData.tags && typeof rawEntryData.tags === "string") {
@@ -77,6 +76,7 @@ const NewEntry: React.FC<NewEntryProps> = () => {
 
   useEscapeBack();
   const navigate = useNavigate();
+  const labelSizes = { base: "md", sm: "lg" };
 
   return (
     <Center
@@ -94,14 +94,13 @@ const NewEntry: React.FC<NewEntryProps> = () => {
           w="100%"
           justify="center"
           py={{ base: "10px", md: "20px", lg: "30px" }}
-          h="92vh"
-          overflowY="auto"
-          sx={scrollBarStyles}
         >
           <Card
-            w="95%"
+            w={{ base: "100vw", sm: "95%" }}
+            h={{ base: "100vh", sm: "fit-content" }}
             maxW="900px"
-            h="fit-content"
+            maxH={{ base: "100vh", sm: "90vh" }}
+            overflowY="hidden"
             bgGradient={darkPinkGrad}
             shadow={shadow}
             rounded={radius}
@@ -110,7 +109,12 @@ const NewEntry: React.FC<NewEntryProps> = () => {
             pt="60px"
             pb="20px"
           >
-            <VStack w="100%" spacing={4} maxW="800px" alignSelf="center">
+            <VStack
+              w="100%"
+              spacing={{ base: 2, sm: 4 }}
+              maxW="800px"
+              alignSelf="center"
+            >
               <Form
                 method="post"
                 id="note-form"
@@ -126,7 +130,11 @@ const NewEntry: React.FC<NewEntryProps> = () => {
                     <BackButton backClick={() => navigate(-1)} />
                   </Box>
                   <CollapsibleStack>
-                    <FormLabel htmlFor="title" fontSize="xl" alignSelf="start">
+                    <FormLabel
+                      htmlFor="title"
+                      fontSize={labelSizes}
+                      alignSelf="start"
+                    >
                       Title
                     </FormLabel>
                     <Flex w="100%" justify="end">
@@ -141,7 +149,11 @@ const NewEntry: React.FC<NewEntryProps> = () => {
                     </Flex>
                   </CollapsibleStack>
                   <CollapsibleStack>
-                    <FormLabel htmlFor="tags" fontSize="xl" alignSelf="start">
+                    <FormLabel
+                      htmlFor="tags"
+                      fontSize={labelSizes}
+                      alignSelf="start"
+                    >
                       Tags
                     </FormLabel>
                     <TagsInput
@@ -152,7 +164,7 @@ const NewEntry: React.FC<NewEntryProps> = () => {
                   <CollapsibleStack>
                     <FormLabel
                       htmlFor="content"
-                      fontSize="xl"
+                      fontSize={labelSizes}
                       alignSelf="start"
                     >
                       Entry
@@ -163,7 +175,7 @@ const NewEntry: React.FC<NewEntryProps> = () => {
                         name="content"
                         placeholder="Diary Entry"
                         required
-                        rows={15}
+                        h={{ base: "300px", sm: "425px" }}
                         resize="none"
                         overflowY="auto"
                         sx={{
@@ -176,7 +188,7 @@ const NewEntry: React.FC<NewEntryProps> = () => {
                   <Input
                     type="hidden"
                     name="tags"
-                    value={enteredTags.join(", ")} // convert tags array to comma-separated string
+                    value={enteredTags.join(", ")}
                   />
                   <HStack spacing={5} w="100%" justify="center">
                     <CustomButton type="submit" leftIcon={<AiOutlineCheck />}>
