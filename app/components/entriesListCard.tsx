@@ -33,6 +33,7 @@ export function EntryCard({ entry }: EntryCardProps) {
           w="100%"
           h="100%"
           p={3}
+          pt={2}
           justify="space-between"
           align="start"
           direction="column"
@@ -44,13 +45,16 @@ export function EntryCard({ entry }: EntryCardProps) {
                 w="100%"
                 justify="space-between"
                 borderBottom="1px solid"
-                pb={1.5}
+                pb={2}
                 align="end"
               >
                 <Text color="gray.300" textShadow={textShadow}>
                   {FormatDate(entry.id)}
                 </Text>
-                <EditDeleteButtons />
+                <EditDeleteButtons
+                  editClick={() => console.log("edit clicked")}
+                  deleteClick={() => console.log("delete clicked")}
+                />
               </HStack>
               <Text
                 color="purple.200"
@@ -73,43 +77,6 @@ export function EntryCard({ entry }: EntryCardProps) {
           </VStack>
         </Flex>
       </Card>
-      {/* <Modal isOpen={isOpen} onClose={onClose} size="2xl" isCentered>
-        <ModalOverlay
-          bg="rgba(0, 0, 0, 0.7)"
-          backdropFilter="blur(4px) hue-rotate(10deg)"
-        />
-
-        <ModalContent
-          bgGradient={darkTealGrad}
-          color="gray.100"
-          shadow={largeShadow}
-        >
-          <ModalHeader fontSize="lg" position="relative">
-            <VStack
-              spacing={0}
-              w="100%"
-              align="start"
-              justify="space-between"
-              lineHeight="1.7rem"
-            >
-              <HStack w="100%" justify="space-between">
-                <Text color="teal.300"> {FormatDate(entry.id)}</Text>
-                <EditDeleteButtons showClose={true} closeClick={onClose} />
-              </HStack>
-              <Text color="purple.100">{entry.title}</Text>
-            </VStack>
-          </ModalHeader>
-          <ModalBody>
-            <VStack w="100%" spacing={4} align="flex-start">
-              <TagsWrap tags={modalTags} />
-              <Text>{entry.entry}</Text>
-            </VStack>
-          </ModalBody>
-          <ModalFooter>
-            <CustomButton onClick={onClose}>Close</CustomButton>
-          </ModalFooter>
-        </ModalContent>
-      </Modal> */}
     </>
   );
 }

@@ -20,7 +20,11 @@ export default function Navigation() {
       <CustomButton h="100%" to="/entries" leftIcon={<IoDocumentsOutline />}>
         Entries
       </CustomButton>
-      <CustomButton h="100%" to="/newentry" leftIcon={<BsJournalPlus />}>
+      <CustomButton
+        h="100%"
+        to="/entries/newentry"
+        leftIcon={<BsJournalPlus />}
+      >
         New
       </CustomButton>
       <CustomButton h="100%" to="/setup" leftIcon={<BsGearWideConnected />}>

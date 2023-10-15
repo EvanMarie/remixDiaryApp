@@ -1,10 +1,5 @@
 import { Flex, Text, VStack } from "@chakra-ui/react";
-import {
-  Outlet,
-  useLoaderData,
-  useLocation,
-  useParams,
-} from "@remix-run/react";
+import { Outlet, useLoaderData } from "@remix-run/react";
 import EntriesList from "~/components/entriesList";
 import FadeIn from "~/components/fadeIn";
 import { getStoredEntries } from "~/data/entries";
@@ -18,12 +13,9 @@ export async function loader() {
 
 export default function Entries() {
   const entries = useLoaderData();
-  const location = useLocation();
-  const pathname = location.pathname;
-  const entryId = useParams().id;
+
   return (
     <FadeIn>
-      {/* {pathname === "/entries" && ( */}
       <Flex
         w="100%"
         justify="center"
@@ -39,8 +31,8 @@ export default function Entries() {
           {entries && <EntriesList entries={entries} />}
         </VStack>
       </Flex>
-      {/* )} */}
-      {pathname === `/entries/${entryId}` && <Outlet />}
+
+      <Outlet />
     </FadeIn>
   );
 }

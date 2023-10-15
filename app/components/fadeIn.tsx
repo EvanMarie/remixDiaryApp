@@ -4,9 +4,11 @@ import { useState } from "react";
 export default function FadeIn({
   children,
   speed,
+  onClick,
 }: {
   children?: React.ReactNode;
   speed?: string;
+  onClick?: () => void;
 }) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [fadeIn, setFadeIn] = useState(true);
@@ -14,6 +16,7 @@ export default function FadeIn({
   return (
     <Fade
       in={fadeIn}
+      onClick={onClick && onClick}
       style={{
         transitionDuration: "1s",
         width: "100%",
