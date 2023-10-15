@@ -12,7 +12,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 import CustomButton from "../components/customButton";
-import { Form, useNavigate } from "@remix-run/react";
+import { Form, useNavigate, useNavigation } from "@remix-run/react";
 import {
   InputStyles,
   darkPinkGrad,
@@ -28,6 +28,7 @@ import { redirect } from "@remix-run/node";
 import FadeIn from "~/components/fadeIn";
 import { useEscapeBack } from "~/utils/escapeNav";
 import { BackButton } from "~/components/editDeleteButtons";
+import InputStack from "~/components/inputStack";
 
 interface NewEntryProps {}
 
@@ -57,14 +58,25 @@ export async function action({ request }: { request: Request }) {
     entryData.tags = [];
   }
 
+  // validation based on title length / existence
+  if (entryData.title.trim().length < 5) {
+    console.log("title too short");
+    return redirect("/entries/newentry");
+  }
+
   const existingEntries = await getStoredEntries();
   const updatedEntries = existingEntries.concat(entryData);
   await storeEntries(updatedEntries);
+  await new Promise<void>((resolve, reject) =>
+    setTimeout(() => resolve(), 500)
+  );
   return redirect("/entries");
 }
 
 const NewEntry: React.FC<NewEntryProps> = () => {
   const [enteredTags, setEnteredTags] = useState<string[]>([]);
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
 
   const handleTagsChange = (newTags: string[]) => {
     setEnteredTags(newTags);
@@ -93,12 +105,13 @@ const NewEntry: React.FC<NewEntryProps> = () => {
         <Flex
           w="100%"
           justify="center"
+          onClick={() => navigate(-1)}
           py={{ base: "10px", md: "20px", lg: "30px" }}
         >
           <Card
             w={{ base: "100vw", sm: "95%" }}
             h={{ base: "100vh", sm: "fit-content" }}
-            maxW="900px"
+            maxW="800px"
             maxH={{ base: "100vh", sm: "90vh" }}
             overflowY="hidden"
             bgGradient={darkPinkGrad}
@@ -106,15 +119,10 @@ const NewEntry: React.FC<NewEntryProps> = () => {
             rounded={radius}
             color="gray.100"
             onClick={(e) => e.stopPropagation()}
-            pt="60px"
+            pt={{ base: "125px", sm: "60px" }}
             pb="20px"
           >
-            <VStack
-              w="100%"
-              spacing={{ base: 2, sm: 4 }}
-              maxW="800px"
-              alignSelf="center"
-            >
+            <Flex w="100%" maxW="800px" alignSelf="center">
               <Form
                 method="post"
                 id="note-form"
@@ -125,34 +133,30 @@ const NewEntry: React.FC<NewEntryProps> = () => {
                   justifyContent: "center",
                 }}
               >
-                <VStack w="90%" spacing={6}>
-                  <Box position="absolute" top="10px" right="10px">
+                <VStack w="90%" spacing={{ base: 3, sm: 6 }}>
+                  <Box
+                    position="absolute"
+                    top={{ base: "80px", sm: "10px" }}
+                    right="10px"
+                  >
                     <BackButton backClick={() => navigate(-1)} />
                   </Box>
-                  <CollapsibleStack>
-                    <FormLabel
-                      htmlFor="title"
-                      fontSize={labelSizes}
-                      alignSelf="start"
-                    >
-                      Title
-                    </FormLabel>
-                    <Flex w="100%" justify="end">
-                      <Input
-                        type="text"
-                        id="title"
-                        name="title"
-                        placeholder="Entry Title"
-                        required
-                        sx={InputStyles}
-                      />
-                    </Flex>
-                  </CollapsibleStack>
+
+                  <InputStack
+                    label="Title"
+                    id="title"
+                    name="title"
+                    placeholder="Entry Title"
+                    required
+                    minLength={5}
+                  />
+
                   <CollapsibleStack>
                     <FormLabel
                       htmlFor="tags"
                       fontSize={labelSizes}
                       alignSelf="start"
+                      lineHeight={{ base: "1rem", sm: "auto" }}
                     >
                       Tags
                     </FormLabel>
@@ -166,6 +170,7 @@ const NewEntry: React.FC<NewEntryProps> = () => {
                       htmlFor="content"
                       fontSize={labelSizes}
                       alignSelf="start"
+                      lineHeight={{ base: "1rem", sm: "auto" }}
                     >
                       Entry
                     </FormLabel>
@@ -191,17 +196,23 @@ const NewEntry: React.FC<NewEntryProps> = () => {
                     value={enteredTags.join(", ")}
                   />
                   <HStack spacing={5} w="100%" justify="center">
-                    <CustomButton type="submit" leftIcon={<AiOutlineCheck />}>
-                      Add Entry
+                    <CustomButton
+                      type="submit"
+                      disabled={isSubmitting}
+                      leftIcon={<AiOutlineCheck />}
+                    >
+                      {isSubmitting ? "Adding..." : "Add Entry"}
                     </CustomButton>
                     <CustomButton
                       onClick={handleClear}
+                      disabled={isSubmitting}
                       leftIcon={<AiOutlineClose />}
                     >
                       Clear
                     </CustomButton>
                     <CustomButton
                       onClick={() => navigate(-1)}
+                      disabled={isSubmitting}
                       leftIcon={<AiOutlineClose />}
                     >
                       Cancel
@@ -209,7 +220,7 @@ const NewEntry: React.FC<NewEntryProps> = () => {
                   </HStack>
                 </VStack>
               </Form>
-            </VStack>
+            </Flex>
           </Card>
         </Flex>
       </FadeIn>

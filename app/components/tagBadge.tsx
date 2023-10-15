@@ -9,6 +9,7 @@ export default function TagBadge({ children, ...props }: TagBadgeProps) {
   return (
     <Badge
       bgGradient={lightPurpleGrad}
+      color="gray.900"
       fontSize="1.2rem"
       fontWeight="600"
       borderRadius="lg"

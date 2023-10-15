@@ -13,6 +13,7 @@ import {
   textShadow,
 } from "~/styles/customTheme";
 import FormatDate from "~/utils/formatDate";
+import { useDetectSafari } from "~/utils/useDetectSafari";
 
 export async function loader() {
   const entries = await getStoredEntries();
@@ -27,7 +28,7 @@ export default function ViewEntry() {
   const navigate = useNavigate();
   const entryTags =
     selectedEntry && selectedEntry.tags?.length > 0 ? selectedEntry.tags : [];
-
+  const isSafariMobile = useDetectSafari();
   return (
     <Center
       w="100vw"
@@ -42,18 +43,21 @@ export default function ViewEntry() {
     >
       {" "}
       <FadeIn>
-        <Flex p={4} w="100%" justify="center">
+        <Flex
+          p={{ base: 0, sm: 4 }}
+          w="100%"
+          justify="center"
+          overflowY="hidden"
+        >
           <VStack
             w={{ base: "100vw", sm: "100%" }}
             h={{ base: "100vh", sm: "auto" }}
             maxW="800px"
             minH="400px"
-            // maxH={{ base: "100vh", sm: "600px" }}
-            // overflowY="auto"
             overflowY="hidden"
-            sx={scrollBarStyles}
             bgGradient={darkTealGrad}
-            p={4}
+            p={{ base: 4, md: 8 }}
+            pt={{ base: "85px", sm: "20px" }}
             zIndex="3"
             onClick={(e) => e.stopPropagation()}
             rounded={radius}
@@ -103,7 +107,9 @@ export default function ViewEntry() {
                 <Box
                   w="100%"
                   px={2}
-                  maxH={{ base: "600px", sm: "400px" }}
+                  maxH={
+                    isSafariMobile ? "525px" : { base: "700px", sm: "500px" }
+                  }
                   overflowY="auto"
                   sx={scrollBarStyles}
                 >

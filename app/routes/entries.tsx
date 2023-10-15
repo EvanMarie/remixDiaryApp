@@ -31,7 +31,6 @@ export default function Entries() {
           {entries && <EntriesList entries={entries} />}
         </VStack>
       </Flex>
-
       <Outlet />
     </FadeIn>
   );

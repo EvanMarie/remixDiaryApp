@@ -7,24 +7,26 @@ import { useNavigate } from "@remix-run/react";
 import EditDeleteButtons from "./editDeleteButtons";
 
 type EntryCardProps = {
-  entry: Entry; // Using the 'Entry' type you defined
+  entry: Entry;
+  cardColor?: string;
 };
 
-export function EntryCard({ entry }: EntryCardProps) {
+export function EntryCard({ entry, cardColor }: EntryCardProps) {
   const cardTags = entry.tags?.length > 0 ? entry.tags.slice(0, 4) : [];
   const navigate = useNavigate();
 
   return (
     <>
       <Card
-        w="380px"
-        rounded="lg"
+        w="100%"
+        maxW="420px"
+        rounded="xl"
         color="gray.100"
         shadow={largeShadow}
         onClick={() => navigate(`${entry.id}`)}
       >
         <Flex
-          bgGradient={darkPinkGrad}
+          bgGradient={cardColor ? cardColor : darkPinkGrad}
           _hover={{
             cursor: "pointer",
             bgGradient: "linear(to-b, teal.900, teal.800)",

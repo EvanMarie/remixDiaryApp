@@ -10,7 +10,7 @@ export default function Navigation() {
       spacing={4}
       position="fixed"
       h="70px"
-      // bg="gray.900"
+      zIndex="100"
       bgGradient={darkGrayGrad}
       shadow={largeShadow}
       w="100%"

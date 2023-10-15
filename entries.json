@@ -1,1 +1,113 @@
-{"entries":[{"id":"2023-10-14T14:03:35.268Z","tags":["another"],"title":"test 3","entry":"trying again"},{"id":"2023-10-14T14:06:28.565Z","tags":["again"],"title":"again","entry":"again"},{"id":"2023-10-14T14:45:00.798Z","tags":["happy","joyful"],"title":"What a beautiful day","entry":"This is a beautiful day!"},{"id":"2023-10-14T16:23:37.612Z","tags":["this is a tag"],"title":"An entry that is longer for layout","entry":"I am sitting here listening to someone blowing leaves with a leaf blower. Do you know how annoying that is? I really do not like it. I wish they would stop doing that. Why are people so concerned about their leaves?"},{"id":"2023-10-14T16:45:59.288Z","tags":["tag one","tag two","tag three","tag four","tag five"],"title":"An entry with more tags for testing","entry":"What a lovely diary entry. I must say that I am amazed at myself. What a lovely day it is. I cannot think of more things to type anymore."},{"id":"2023-10-14T20:26:17.822Z","tags":["this","is","amazing","omg","i love it"],"title":"This is a fantastic diary entry","entry":"What a great post. This is amazing. I would love to be just like this post in every facet of my life."},{"id":"2023-10-15T02:09:34.197Z","tags":["layout","testing","working"],"title":"New Diary Entry","entry":"I am trying out this new diary entry.\n\nThe purpose is to see if the formatting, i.e. the new paragraphs, will be saved when this is put into the database.\n\nI guess we shall see!"},{"id":"2023-10-15T02:43:04.234Z","tags":["testing this","will this work"],"title":"Testing out scrolling in text field","entry":"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)"},{"id":"2023-10-15T14:10:42.306Z","tags":["layout test"],"title":"Entry 8 ","entry":"Trying to make the entries exceed the screen height"},{"id":"2023-10-15T14:11:05.685Z","tags":["Tags"],"title":"Let's see if this does it","entry":"Still trying to make the entries exceed screen height."},{"id":"2023-10-15T14:12:22.219Z","tags":[],"title":"Test entry","entry":"Testing"},{"id":"2023-10-15T14:20:54.731Z","tags":["long","excessive"],"title":"Long entry","entry":"t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n\nt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n\nt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n\nt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."}]}
+{
+  "entries": [
+    {
+      "id": "2023-01-12T06:20:50.342Z",
+      "tags": ["reflection", "personal growth"],
+      "title": "The Echoes of Laughter",
+      "entry": "The house feels empty, a stark contrast to the cacophony that filled its walls just this past holiday season. It's in these quiet moments that I find the echoes of laughter from friends and family still lingering in the air. It reminds me that happiness is not a constant feast, but the small crumbs we carry with us long after the feast is over. The house feels empty, a stark contrast to the cacophony that filled its walls just this past holiday season. It's in these quiet moments that I find the echoes of laughter from friends and family still lingering in the air. It reminds me that happiness is not a constant feast, but the small crumbs we carry with us long after the feast is over."
+    },
+    {
+      "id": "2023-03-23T12:15:23.125Z",
+      "tags": ["adventure", "travel"],
+      "title": "Chasing Horizons",
+      "entry": "Today, I found an old map tucked in the pages of a second-hand book I bought. It's not a map of any place I recognize, but it sparked in me an unquenchable fire. There's so much world out there that I haven't seen, so many cultures I haven't experienced. The map may be fictional, but the wanderlust it inspired is undeniably real."
+    },
+    {
+      "id": "2023-06-17T07:30:41.541Z",
+      "tags": ["family", "love"],
+      "title": "Unspoken Languages",
+      "entry": "Little Sarah gave me a pebble today. A simple, smooth stone she found during our walk in the park. In her hand, it was an invaluable treasure, a symbol of unspoken languages only the hearts of loved ones can understand. It's fascinating how the smallest gesture can carry the weight of the world's love."
+    },
+    {
+      "id": "2023-08-29T17:49:20.342Z",
+      "tags": ["motivation", "self-improvement"],
+      "title": "Stars Amidst Shadows",
+      "entry": "The power went out tonight, and with it, all my meticulously laid plans. But as I looked outside, I realized the stars seemed to shine brighter without the city's neon glow. Sometimes, it seems, we must face the darkness to truly appreciate the light. It's a lesson I'd do well to remember when my own shadows loom large."
+    },
+    {
+      "id": "2023-10-14T21:15:01.231Z",
+      "tags": ["creativity", "writing"],
+      "title": "Ink-Stained Adventures",
+      "entry": "I spilled ink across my journal today, a black sea swallowing my words whole. Frustration was my first companion, but then imagination took its hand. The stain was not a mess but a night sky, an ocean depth, a shadowed forest waiting to be explored. I found my pen creating worlds where before there was only regret."
+    },
+    {
+      "id": "2023-11-02T11:06:18.491Z",
+      "tags": ["dreams", "aspirations"],
+      "title": "Windows and Mirrors",
+      "entry": "I paused today before a new café, its cozy interior a snapshot of a dream I've cradled for years. It's a scary thing, holding your dream in your hands, feeling its tangible heartbeat. But I think it's time to step beyond the window, to see my reflection not just in the glass but in the reality it mirrors."
+    },
+    {
+      "id": "2023-02-14T08:34:21.672Z",
+      "tags": ["romance", "self-love"],
+      "title": "Valentine's Whispers",
+      "entry": "Valentine's Day, a time where the scent of love floats stronger than ever. As couples celebrate, I find solace in the embrace of a book, the steam from my tea acting as a tender kiss upon my cheek. Love isn't only found in another but often discovered in the silent moments we gift to ourselves."
+    },
+    {
+      "id": "2023-04-05T15:07:33.011Z",
+      "tags": ["nature", "rebirth"],
+      "title": "Spring's Palette",
+      "entry": "The first brushstrokes of springtime color the world in vibrant hues, the stark canvas of winter giving way to blooming splendor. Each petal, a testament to nature's resilience; each scent, a memoir of cycles reborn. As life burgeons around me, I feel my spirit dance to the rhythm of Earth's perpetual ballet."
+    },
+    {
+      "id": "2023-05-25T19:22:16.940Z",
+      "tags": ["music", "nostalgia"],
+      "title": "Melodies of the Past",
+      "entry": "An old tune waltzed through the airwaves today, carrying with it memories of warm summer nights and the exhilaration of young love. It's intriguing how melodies act as a time machine, where a simple sequence of notes can hold the power to transport us to moments we thought were lost in the sands of time."
+    },
+    {
+      "id": "2023-07-13T22:50:29.304Z",
+      "tags": ["adventure", "friendship"],
+      "title": "Uncharted Memories",
+      "entry": "We lost our map today, laughter erupting amidst the chaos of our unintended detour. As we navigated back, every wrong turn stitched a new patch into our tapestry of friendship. By journey's end, we realized; the most precious destinations often aren't on any map — they're in the laughter and stories shared along the way."
+    },
+    {
+      "id": "2023-08-08T05:36:14.228Z",
+      "tags": ["dreams", "mystery"],
+      "title": "Nocturnal Wanderings",
+      "entry": "Last night, my dreams painted a cascade of indescribable colors, a universe beyond the reach of consciousness. In the realm of sleep, I traversed worlds unfettered by reality's anchor, each a puzzle piece of my own enigmatic psyche. I awoke not with answers, but with a heart full of wonder."
+    },
+    {
+      "id": "2023-09-19T13:01:09.501Z",
+      "tags": ["change", "growth"],
+      "title": "Autumn's Approach",
+      "entry": "The whisper of autumnal winds speaks the language of transformation. Leaves, in their sunset hues, are brave reminders of the beauty in change, each one having clung to the known before embarking on a journey to the unknown. They mirror life's constant evolution, encouraging me to embrace my own seasons of change."
+    },
+    {
+      "id": "2023-10-31T18:11:40.110Z",
+      "tags": ["celebration", "imagination"],
+      "title": "Veils and Revels",
+      "entry": "Tonight, the veil thins, inviting whimsical spirits to dance among us. Costumes swirl in a kaleidoscope of fantasies brought to life, each reveler hiding behind a mask of their own desires. It's not just an evening of spectral celebration, but a liberation of the soul's hidden faces."
+    },
+    {
+      "id": "2023-12-01T02:30:25.672Z",
+      "tags": ["winter", "inner peace"],
+      "title": "First Snow's Serenity",
+      "entry": "The inaugural snowfall graces the earth, a tranquil blanket that hushes the world. In the quietude, my mind finds its own silence. The frost-laden air weaves tales of introspection, inviting me to find comfort not in the warmth of the hearth, but in the embrace of my inner sanctuary."
+    },
+    {
+      "id": "2024-01-01T00:00:01.001Z",
+      "tags": ["new beginnings", "hope"],
+      "title": "A Year Reborn",
+      "entry": "The clock strikes midnight, and with it, a new year is birthed. The air buzzes with the collective aspiration of countless hearts, each beat a silent wish cast into the cosmos. It's a reminder that time continues its endless march, and in its wake, we're gifted the chance to redefine our paths."
+    },
+    {
+      "id": "2024-02-29T09:20:14.214Z",
+      "tags": ["rare", "appreciation"],
+      "title": "Leap of Faith",
+      "entry": "An extra day, a rarity in the fabric of our lives. It's a stark reminder of the uniqueness woven into our existence. Today, I ponder the leaps of faith I've taken and the fear that accompanied them. Yet, here in this gifted rarity, I find the strength to leap once more."
+    },
+    {
+      "id": "2024-03-22T07:00:00.000Z",
+      "tags": ["renewal", "clarity"],
+      "title": "Equinox of Clarity",
+      "entry": "The equinox balances night and day, a harmony that resonates within my soul. I walk a path lined with burgeoning life, the soil rich with promise. It's a time of equal parts, a chance to align my own desires and fears, and find clarity in the equilibrium."
+    },
+    {
+      "id": "2024-04-30T16:45:33.211Z",
+      "tags": ["magic", "tradition"],
+      "title": "Beltane's Embers",
+      "entry": "The embers of Beltane fires lick the starlit skies, an ancient magic thrumming in the heart of the earth. As I dance around the flames, I join a lineage of spirits who found communion in nature's elements. In the fire's heat, I see the reflection of my ancestors' hopes, dreams, and unwavering belief in life's mystical tapestry."
+    }
+  ]
+}
+

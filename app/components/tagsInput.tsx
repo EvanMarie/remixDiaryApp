@@ -86,7 +86,7 @@ const TagsInput: React.FC<TagsInputProps> = ({ onTagsChange, tags }) => {
         sx={InputStyles}
       />
 
-      <Wrap spacing={4} justify="end">
+      <Wrap spacing={4} justify="start" w="100%">
         {localTags.length === 0 && (
           <Flex w="100%" justify="start">
             <Text color="gray.900" fontSize="1.2rem" fontWeight="bold">
