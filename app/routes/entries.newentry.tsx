@@ -12,7 +12,12 @@ import {
   Box,
 } from "@chakra-ui/react";
 import CustomButton from "../components/customButton";
-import { Form, useNavigate, useNavigation } from "@remix-run/react";
+import {
+  Form,
+  // useActionData,
+  useNavigate,
+  useNavigation,
+} from "@remix-run/react";
 import {
   InputStyles,
   darkPinkGrad,
@@ -61,23 +66,31 @@ export async function action({ request }: { request: Request }) {
   // validation based on title length / existence
   if (entryData.title.trim().length < 5) {
     console.log("title too short");
-    return redirect("/entries/newentry");
+    return { message: "Title must be at least 5 characters long" };
   }
 
   const existingEntries = await getStoredEntries();
-  const updatedEntries = existingEntries.concat(entryData);
-  await storeEntries(updatedEntries);
+  // const updatedEntries = existingEntries.concat(entryData);
+  // Adds the new entry at the beginning of the array
+  existingEntries.unshift(entryData);
+  await storeEntries(existingEntries);
+
   await new Promise<void>((resolve, reject) =>
     setTimeout(() => resolve(), 500)
   );
   return redirect("/entries");
 }
 
+// interface ActionData {
+//   message?: string;
+// }
+
 const NewEntry: React.FC<NewEntryProps> = () => {
   const [enteredTags, setEnteredTags] = useState<string[]>([]);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
-
+  // to implement validation for title length with Action Data instead of in the component
+  // const data = useActionData() as ActionData | undefined;
   const handleTagsChange = (newTags: string[]) => {
     setEnteredTags(newTags);
   };
@@ -109,17 +122,17 @@ const NewEntry: React.FC<NewEntryProps> = () => {
           py={{ base: "10px", md: "20px", lg: "30px" }}
         >
           <Card
-            w={{ base: "100vw", sm: "95%" }}
-            h={{ base: "100vh", sm: "fit-content" }}
+            w={{ base: "100vw", md: "95%" }}
+            h={{ base: "100vh", md: "fit-content" }}
             maxW="800px"
-            maxH={{ base: "100vh", sm: "90vh" }}
+            maxH={{ base: "100vh", md: "90vh" }}
             overflowY="hidden"
             bgGradient={darkPinkGrad}
             shadow={shadow}
             rounded={radius}
             color="gray.100"
             onClick={(e) => e.stopPropagation()}
-            pt={{ base: "125px", sm: "60px" }}
+            pt={{ base: "125px", md: "60px" }}
             pb="20px"
           >
             <Flex w="100%" maxW="800px" alignSelf="center">
@@ -133,10 +146,10 @@ const NewEntry: React.FC<NewEntryProps> = () => {
                   justifyContent: "center",
                 }}
               >
-                <VStack w="90%" spacing={{ base: 3, sm: 6 }}>
+                <VStack w="90%" spacing={{ base: 3, md: 6 }}>
                   <Box
                     position="absolute"
-                    top={{ base: "80px", sm: "10px" }}
+                    top={{ base: "80px", md: "10px" }}
                     right="10px"
                   >
                     <BackButton backClick={() => navigate(-1)} />
@@ -150,6 +163,8 @@ const NewEntry: React.FC<NewEntryProps> = () => {
                     required
                     minLength={5}
                   />
+                  {/* to implement validation for title length with Action Data instead of in the component
+                  {data && data.message ? <p>{data.message}</p> : null} */}
 
                   <CollapsibleStack>
                     <FormLabel

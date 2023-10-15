@@ -1,10 +1,12 @@
-import { Flex, Text, VStack } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { Outlet, useLoaderData } from "@remix-run/react";
+
 import EntriesList from "~/components/entriesList";
+import ErrorBox from "~/components/errorBox";
 import FadeIn from "~/components/fadeIn";
-import { getStoredEntries } from "~/data/entries";
+import { Entry, getStoredEntries } from "~/data/entries";
 // import { getStoredEntries } from "~/data/entries";
-import { scrollBarStyles, textShadow } from "~/styles/customTheme";
+import { scrollBarStyles } from "~/styles/customTheme";
 
 export async function loader() {
   const entries = await getStoredEntries();
@@ -12,7 +14,7 @@ export async function loader() {
 }
 
 export default function Entries() {
-  const entries = useLoaderData();
+  const entries = useLoaderData<Entry[]>();
 
   return (
     <FadeIn>
@@ -24,12 +26,16 @@ export default function Entries() {
         overflowY="auto"
         sx={scrollBarStyles}
       >
-        <VStack w="100%" spacing={4}>
-          <Text fontSize="4xl" fontWeight="bold" textShadow={textShadow}>
-            My Diary Entries
-          </Text>
-          {entries && <EntriesList entries={entries} />}
-        </VStack>
+        <Flex justify="center" w="100%">
+          {entries && entries.length > 0 ? (
+            <EntriesList entries={entries} />
+          ) : (
+            <ErrorBox
+              redirectLink="/entries/newentry"
+              buttonMessage="Start Writing!"
+            />
+          )}
+        </Flex>
       </Flex>
       <Outlet />
     </FadeIn>

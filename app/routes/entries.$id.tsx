@@ -1,5 +1,5 @@
 import { Box, Center, Flex, HStack, Text, VStack } from "@chakra-ui/react";
-import { useLoaderData, useNavigate, useParams } from "@remix-run/react";
+import { useLoaderData, useNavigate } from "@remix-run/react";
 import EditDeleteButtons from "~/components/editDeleteButtons";
 import { useEscapeBack } from "~/utils/escapeNav";
 import FadeIn from "~/components/fadeIn";
@@ -14,21 +14,30 @@ import {
 } from "~/styles/customTheme";
 import FormatDate from "~/utils/formatDate";
 import { useDetectSafari } from "~/utils/useDetectSafari";
+import { json } from "@remix-run/node";
 
-export async function loader() {
+export async function loader({ params }: { params: { id: string } }) {
   const entries = await getStoredEntries();
-  return entries;
+  const entryId = params.id;
+  const selectedEntry = entries?.find((entry: Entry) => entryId === entry.id);
+  if (!selectedEntry) {
+    // throw new Error("No entry found");
+    throw json(
+      { message: "No entry found" },
+      { status: 404, statusText: "No entry found" }
+    );
+  }
+  return selectedEntry;
 }
 
 export default function ViewEntry() {
   useEscapeBack();
-  const entries = useLoaderData<Entry[]>();
-  const entryId = useParams().id;
-  const selectedEntry = entries?.find((entry: Entry) => entryId === entry.id);
+  const selectedEntry = useLoaderData<Entry>();
   const navigate = useNavigate();
   const entryTags =
     selectedEntry && selectedEntry.tags?.length > 0 ? selectedEntry.tags : [];
   const isSafariMobile = useDetectSafari();
+
   return (
     <Center
       w="100vw"
@@ -62,6 +71,7 @@ export default function ViewEntry() {
             onClick={(e) => e.stopPropagation()}
             rounded={radius}
             shadow={largeShadow}
+            animation="fade-slide-in 0.5s ease-out forwards;"
           >
             <Flex fontSize="lg" w="100%" position="relative">
               <VStack
@@ -85,7 +95,7 @@ export default function ViewEntry() {
                     showBack={true}
                     backClick={() => navigate(-1)}
                     editClick={() => console.log("edit clicked")}
-                    deleteClick={() => console.log("delete clicked")}
+                    id={selectedEntry ? selectedEntry.id : ""}
                   />
                 </HStack>
                 <Box w="100%" py={2}>

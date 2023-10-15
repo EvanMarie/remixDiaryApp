@@ -11,12 +11,14 @@ interface CustomButtonProps extends ButtonProps {
   children: React.ReactNode;
   to?: string;
   onClick?: () => void;
+  type?: "button" | "submit" | "reset" | undefined;
 }
 
 export default function CustomButton({
   children,
   to,
   onClick,
+  type = "button",
   ...props
 }: CustomButtonProps) {
   const location = useLocation();
@@ -34,6 +36,7 @@ export default function CustomButton({
       h="33px"
       rounded={radius}
       shadow={shadow}
+      type={type}
       _hover={{
         bg: "purple.200",
         color: "gray.900",

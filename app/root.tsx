@@ -1,4 +1,4 @@
-import { ChakraProvider, Flex } from "@chakra-ui/react";
+import { ChakraProvider, Flex, Text } from "@chakra-ui/react";
 import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
@@ -7,10 +7,13 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from "@remix-run/react";
-import CustomTheme from "./styles/customTheme";
 import Navigation from "./components/navigation";
 import styles from "./styles/global.css";
+
+import ErrorBox from "./components/errorBox";
+import CustomTheme from "./styles/customTheme";
 
 export const links: LinksFunction = () => [
   {
@@ -47,6 +50,51 @@ export default function App() {
             <Navigation />
             <Flex w="100%" pt="70px" justify="center" overflow="hidden">
               <Outlet />
+            </Flex>
+          </Flex>
+        </ChakraProvider>
+        <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
+      </body>
+    </html>
+  );
+}
+
+interface ErrorBoundaryProps {
+  error: Error;
+  children?: React.ReactNode;
+}
+
+export function ErrorBoundary({ error }: ErrorBoundaryProps) {
+  console.log(error);
+  const location = useLocation();
+  const pathname = location.pathname;
+
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
+        <title>An error has occurred.</title>
+      </head>
+
+      <body>
+        <ChakraProvider theme={CustomTheme}>
+          <Flex w="100vw" h="100vh" justify="center" overflow="hidden">
+            <Navigation />
+            <Flex w="100%" pt="70px" justify="center" overflow="hidden">
+              <ErrorBox>
+                {pathname.includes("entries") ? (
+                  <Text fontSize="2xl">Are you sure that entry exists?</Text>
+                ) : error ? (
+                  error.message
+                ) : (
+                  "This was most unexpected."
+                )}
+              </ErrorBox>
             </Flex>
           </Flex>
         </ChakraProvider>

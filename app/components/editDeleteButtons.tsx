@@ -3,6 +3,7 @@ import CustomIconButton from "./customIconButton";
 import { BiEdit } from "react-icons/bi/index.js";
 import { MdDeleteForever } from "react-icons/md/index.js";
 import { RiArrowGoBackLine } from "react-icons/ri/index.js";
+import { useSubmit } from "@remix-run/react";
 
 export function EditButton({ editClick }: { editClick: () => void }) {
   return (
@@ -17,7 +18,8 @@ export function EditButton({ editClick }: { editClick: () => void }) {
   );
 }
 
-export function DeleteButton({ deleteClick }: { deleteClick: () => void }) {
+export function DeleteButton({ id }: { id: string }) {
+  const submit = useSubmit();
   return (
     <CustomIconButton
       aria-label="Delete entry"
@@ -25,7 +27,7 @@ export function DeleteButton({ deleteClick }: { deleteClick: () => void }) {
       h="30px"
       w="30px"
       size="23px"
-      onClick={deleteClick}
+      onClick={() => submit({ id }, { action: "/deleteentry", method: "post" })}
     />
   );
 }
@@ -44,22 +46,22 @@ export function BackButton({ backClick }: { backClick: () => void }) {
 }
 
 interface EditDeleteButtonsProps {
+  id?: string;
   showBack?: boolean;
   editClick: () => void;
-  deleteClick: () => void;
   backClick?: () => void;
 }
 
 export default function EditDeleteButtons({
+  id,
   showBack = false,
   editClick,
-  deleteClick,
   backClick,
 }: EditDeleteButtonsProps) {
   return (
     <HStack spacing={3}>
       {editClick && <EditButton editClick={editClick} />}
-      {deleteClick && <DeleteButton deleteClick={deleteClick} />}
+      {id && <DeleteButton id={id} />}
       {showBack && backClick && <BackButton backClick={backClick} />}
     </HStack>
   );

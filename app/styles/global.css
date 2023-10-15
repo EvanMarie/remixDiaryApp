@@ -16,3 +16,14 @@
     justify-content: center;
     align-items: center;
 }
+
+@keyframes fade-slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(-2rem);
+    }
+
+    to {
+        opacity: 1;
+    }
+}

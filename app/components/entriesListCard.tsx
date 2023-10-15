@@ -23,6 +23,7 @@ export function EntryCard({ entry, cardColor }: EntryCardProps) {
         rounded="xl"
         color="gray.100"
         shadow={largeShadow}
+        animation="fade-blur-in 1.5s ease-out forwards;"
         onClick={() => navigate(`${entry.id}`)}
       >
         <Flex
@@ -49,13 +50,14 @@ export function EntryCard({ entry, cardColor }: EntryCardProps) {
                 borderBottom="1px solid"
                 pb={2}
                 align="end"
+                onClick={(e) => e.stopPropagation()}
               >
                 <Text color="gray.300" textShadow={textShadow}>
                   {FormatDate(entry.id)}
                 </Text>
                 <EditDeleteButtons
-                  editClick={() => console.log("edit clicked")}
-                  deleteClick={() => console.log("delete clicked")}
+                  editClick={() => navigate(`/entries/editentry/${entry.id}`)}
+                  id={entry.id}
                 />
               </HStack>
               <Text
