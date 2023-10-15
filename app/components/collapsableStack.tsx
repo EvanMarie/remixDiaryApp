@@ -16,7 +16,7 @@ export default function CollapsibleStack({
       direction={{ base: "column", [expand]: "row" }}
       spacing={{ base: 0, [expand]: 4 }}
       justify={{ base: "center", [expand]: "space-between" }}
-      align={{ base: "center", [expand]: "flex-start" }}
+      align={{ base: "center", [expand]: "start" }}
       transition="all 0.3s ease-in-out"
       {...props}
     >

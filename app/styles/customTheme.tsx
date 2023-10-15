@@ -3,6 +3,25 @@ import { extendTheme, withDefaultColorScheme } from "@chakra-ui/react";
 export const radius = "sm";
 export const shadow = "0px 0px 10px rgba(0,0,0,0.7)";
 export const largeShadow = "0px 0px 20px rgba(0,0,0,0.7)";
+export const textShadow = "2px 2px 5px rgba(0,0,0,0.9)";
+export const lightPurpleGrad = "linear(to-b, purple.100, purple.200)";
+export const lightTealGrad = "linear(to-b, teal.100, teal.200, teal.300)";
+export const darkPinkGrad = "linear(to-b, pink.800, pink.900)";
+export const lightGrayGrad = "linear(to-b, gray.400, gray.500)";
+export const darkGrayGrad = "linear(to-b, gray.700, gray.800, gray.900)";
+export const darkTealGrad =
+  "linear(to-b, teal.900, teal.800, teal.800, teal.900)";
+
+const customTransition = {
+  enter: {
+    duration: 0.5, // time in seconds
+    ease: [0.4, 0, 0.2, 1], // custom easing
+  },
+  exit: {
+    duration: 0.5, // time in seconds
+    ease: [0.4, 0, 0.2, 1], // custom easing
+  },
+};
 
 const CustomTheme = extendTheme(
   withDefaultColorScheme({
@@ -49,7 +68,8 @@ const CustomTheme = extendTheme(
           overflowX: "hidden",
           overflowY: "hidden",
           fontFamily: "'Alegreya Sans', sans-serif;",
-          bgGradient: "linear(to-b, gray.700, gray.800, gray.900)",
+          bgGradient:
+            "linear(to-b, gray.700, gray.800, gray.900, gray.800, gray.700)",
           color: "gray.100",
           fontSize: "1.3rem",
         },
@@ -65,7 +85,13 @@ const CustomTheme = extendTheme(
         },
       },
 
-      components: {},
+      components: {
+        Fade: {
+          defaultProps: {
+            transition: customTransition,
+          },
+        },
+      },
     },
   }
 );

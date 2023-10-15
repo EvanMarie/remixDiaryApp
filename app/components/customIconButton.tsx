@@ -1,5 +1,10 @@
 import { IconButton, IconButtonProps } from "@chakra-ui/react";
-import { radius, shadow } from "~/styles/customTheme";
+import {
+  lightPurpleGrad,
+  lightTealGrad,
+  radius,
+  shadow,
+} from "~/styles/customTheme";
 import { NavLink, useLocation } from "@remix-run/react";
 
 interface CustomIconButtonProps extends IconButtonProps {
@@ -17,7 +22,7 @@ export default function CustomIconButton({
   const isActive = location.pathname === to;
   const iconButton = (
     <IconButton
-      bg={isActive ? "purple.200" : "teal.300"}
+      bgGradient={isActive ? lightPurpleGrad : lightTealGrad}
       color="gray.900"
       fontSize="1.7rem"
       fontWeight="600"

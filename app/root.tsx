@@ -10,8 +10,13 @@ import {
 } from "@remix-run/react";
 import CustomTheme from "./styles/customTheme";
 import Navigation from "./components/navigation";
+import styles from "./styles/global.css";
 
 export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: styles,
+  },
   {
     rel: "preconnect",
     href: "https://fonts.googleapis.com",

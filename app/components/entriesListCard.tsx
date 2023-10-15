@@ -1,76 +1,115 @@
-import { Card, HStack, Text, VStack, Wrap } from "@chakra-ui/react";
-import CustomIconButton from "./customIconButton";
-import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai/index.js";
+import { Box, Card, Flex, HStack, Text, VStack } from "@chakra-ui/react";
 import { Entry } from "~/data/entries";
 import FormatDate from "~/utils/formatDate";
-import { DarkPinkFlex } from "./basicContainers";
-import TagBadge from "./tagBadge";
-import { radius } from "~/styles/customTheme";
+import { darkPinkGrad, largeShadow, textShadow } from "~/styles/customTheme";
+import TagsWrap from "./tagsWrap";
+import { useNavigate } from "@remix-run/react";
+import EditDeleteButtons from "./editDeleteButtons";
 
 type EntryCardProps = {
   entry: Entry; // Using the 'Entry' type you defined
 };
 
 export function EntryCard({ entry }: EntryCardProps) {
+  const cardTags = entry.tags?.length > 0 ? entry.tags.slice(0, 4) : [];
+  const navigate = useNavigate();
+
   return (
-    <Card w="380px" rounded="lg" color="gray.100">
-      <DarkPinkFlex
-        w="100%"
-        h="100%"
-        p={3}
-        justify="space-between"
-        align="flex-start"
-        direction="column"
+    <>
+      <Card
+        w="380px"
         rounded="lg"
+        color="gray.100"
+        shadow={largeShadow}
+        onClick={() => navigate(`${entry.id}`)}
       >
-        <VStack w="100%">
-          <VStack w="100%" align="flex-start" spacing={0}>
-            <HStack w="100%" justify="space-between">
-              <Text color="gray.300">{FormatDate(entry.id)}</Text>
-              <HStack>
-                <CustomIconButton
-                  aria-label="Edit entry"
-                  icon={<AiOutlineEdit />}
-                  h="30px"
-                  w="30px"
-                  size="23px"
-                  //   onClick={() => handleEdit(entry.id)}
-                />
-                <CustomIconButton
-                  aria-label="Delete entry"
-                  icon={<AiOutlineDelete />}
-                  h="30px"
-                  w="30px"
-                  size="23px"
-                  //   onClick={() => handleDelete(entry.id)}
-                />
+        <Flex
+          bgGradient={darkPinkGrad}
+          _hover={{
+            cursor: "pointer",
+            bgGradient: "linear(to-b, teal.900, teal.800)",
+          }}
+          transition="all 0.3s ease-in-out"
+          w="100%"
+          h="100%"
+          p={3}
+          justify="space-between"
+          align="start"
+          direction="column"
+          rounded="lg"
+        >
+          <VStack w="100%">
+            <VStack w="100%" align="start" spacing={0}>
+              <HStack
+                w="100%"
+                justify="space-between"
+                borderBottom="1px solid"
+                pb={1.5}
+                align="end"
+              >
+                <Text color="gray.300" textShadow={textShadow}>
+                  {FormatDate(entry.id)}
+                </Text>
+                <EditDeleteButtons />
               </HStack>
-            </HStack>
-            <Text color="teal.200" fontSize="lg" fontWeight="bold">
-              {entry.title}
-            </Text>
+              <Text
+                color="purple.200"
+                textShadow={textShadow}
+                noOfLines={1}
+                fontSize="lg"
+                fontWeight="bold"
+              >
+                {entry.title}
+              </Text>
+            </VStack>
+            <VStack w="100%" spacing={4} align="start">
+              <Box minH="43px">
+                <Text noOfLines={2} lineHeight="1.3rem">
+                  {entry.entry}
+                </Text>
+              </Box>
+              <TagsWrap tags={cardTags} />
+            </VStack>
           </VStack>
-          <VStack w="100%" spacing={4}>
-            <Text noOfLines={2} lineHeight="1.3rem">
-              {entry.entry}
-            </Text>
-            <Wrap justify="flex-start" w="100%">
-              {entry.tags &&
-                entry.tags.length > 0 &&
-                entry.tags.map((tag) => (
-                  <TagBadge
-                    key={tag}
-                    fontSize="sm"
-                    lineHeight="1.4rem"
-                    rounded={radius}
-                  >
-                    {tag}
-                  </TagBadge>
-                ))}
-            </Wrap>
-          </VStack>
-        </VStack>
-      </DarkPinkFlex>
-    </Card>
+        </Flex>
+      </Card>
+      {/* <Modal isOpen={isOpen} onClose={onClose} size="2xl" isCentered>
+        <ModalOverlay
+          bg="rgba(0, 0, 0, 0.7)"
+          backdropFilter="blur(4px) hue-rotate(10deg)"
+        />
+
+        <ModalContent
+          bgGradient={darkTealGrad}
+          color="gray.100"
+          shadow={largeShadow}
+        >
+          <ModalHeader fontSize="lg" position="relative">
+            <VStack
+              spacing={0}
+              w="100%"
+              align="start"
+              justify="space-between"
+              lineHeight="1.7rem"
+            >
+              <HStack w="100%" justify="space-between">
+                <Text color="teal.300"> {FormatDate(entry.id)}</Text>
+                <EditDeleteButtons showClose={true} closeClick={onClose} />
+              </HStack>
+              <Text color="purple.100">{entry.title}</Text>
+            </VStack>
+          </ModalHeader>
+          <ModalBody>
+            <VStack w="100%" spacing={4} align="flex-start">
+              <TagsWrap tags={modalTags} />
+              <Text>{entry.entry}</Text>
+            </VStack>
+          </ModalBody>
+          <ModalFooter>
+            <CustomButton onClick={onClose}>Close</CustomButton>
+          </ModalFooter>
+        </ModalContent>
+      </Modal> */}
+    </>
   );
 }

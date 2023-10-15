@@ -11,7 +11,12 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { AiOutlineClose } from "react-icons/ai/index.js";
-import { InputStyles, radius, shadow } from "~/styles/customTheme";
+import {
+  InputStyles,
+  lightGrayGrad,
+  radius,
+  shadow,
+} from "~/styles/customTheme";
 import TagBadge from "./tagBadge";
 
 interface TagsInputProps {
@@ -61,16 +66,17 @@ const TagsInput: React.FC<TagsInputProps> = ({ onTagsChange, tags }) => {
   return (
     <VStack
       w="100%"
-      align="flex-end"
+      align="end"
       p={2}
       rounded={radius}
-      bg="gray.700"
+      // bg="gray.700"
+      bgGradient={lightGrayGrad}
       color="gray.50"
       shadow={shadow}
       border="1px solid"
       borderColor="gray.600"
       maxW="600px"
-      alignSelf="flex-end"
+      alignSelf="end"
     >
       <Input
         value={inputValue}
@@ -80,10 +86,10 @@ const TagsInput: React.FC<TagsInputProps> = ({ onTagsChange, tags }) => {
         sx={InputStyles}
       />
 
-      <Wrap spacing={4} justify="flex-end">
+      <Wrap spacing={4} justify="end">
         {localTags.length === 0 && (
-          <Flex w="100%" justify="flex-start">
-            <Text color="gray.400" fontSize="1.2rem">
+          <Flex w="100%" justify="start">
+            <Text color="gray.900" fontSize="1.2rem" fontWeight="bold">
               No tags added yet
             </Text>
           </Flex>
@@ -97,7 +103,7 @@ const TagsInput: React.FC<TagsInputProps> = ({ onTagsChange, tags }) => {
                   icon={<AiOutlineClose />}
                   size="xs"
                   display="flex"
-                  justifyContent="flex-end"
+                  justifyContent="end"
                   aria-label={`Remove tag ${tag}`}
                   onClick={() => removeTag(index)}
                   variant="unstyled"

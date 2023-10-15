@@ -12,7 +12,9 @@ export default function EntriesList({ entries }: EntriesListProps) {
       w="100%"
       maxW="1600px"
       px={4}
-      justify={{ base: "center", md: "flex-start" }}
+      spacing={6}
+      //   justify={{ base: "center", md: "start" }}
+      justify="center"
     >
       {entries.map((entry, index) => (
         <EntryCard key={index} entry={entry} />

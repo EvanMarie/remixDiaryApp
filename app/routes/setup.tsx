@@ -26,7 +26,7 @@ export default function Setup() {
           Diary Project
         </Box>
 
-        <HStack w="90%" align="flex-start">
+        <HStack w="90%" align="start">
           <VStack w="25%" spacing={3}>
             <Text fontSize="2xl" borderBottom="1px solid">
               Font Sizes

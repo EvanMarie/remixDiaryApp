@@ -10,8 +10,8 @@ export type Entry = {
 export async function getStoredEntries() {
   const rawFileContent = await fs.readFile('entries.json', { encoding: 'utf-8' });
   const data = JSON.parse(rawFileContent);
-  const storedNotes = data.entries ?? [];
-  return storedNotes;
+  const storedEntries = data.entries ?? [];
+  return storedEntries;
 }
 
 export function storeEntries(entries: Entry[]) {

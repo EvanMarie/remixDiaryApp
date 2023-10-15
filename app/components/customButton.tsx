@@ -1,5 +1,10 @@
 import { Button, ButtonProps } from "@chakra-ui/react";
-import { radius, shadow } from "~/styles/customTheme";
+import {
+  lightPurpleGrad,
+  lightTealGrad,
+  radius,
+  shadow,
+} from "~/styles/customTheme";
 import { NavLink, useLocation } from "@remix-run/react";
 
 interface CustomButtonProps extends ButtonProps {
@@ -19,7 +24,7 @@ export default function CustomButton({
 
   const button = (
     <Button
-      bg={isActive ? "purple.200" : "teal.300"}
+      bgGradient={isActive ? lightPurpleGrad : lightTealGrad}
       color="gray.900"
       fontSize={{ base: "1.2rem", md: "1.3rem", lg: "1.4rem" }}
       py={{ base: 2, sm: 3, md: 4 }}
