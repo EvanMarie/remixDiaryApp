@@ -44,6 +44,7 @@ export default function Navigation() {
         </HStack>
         {isMobile ? (
           <HStack>
+          
             <CustomIconButton
               icon={<IoDocumentsOutline />}
               aria-label="entries"
