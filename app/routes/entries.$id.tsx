@@ -94,7 +94,6 @@ export default function ViewEntry() {
                   <EditDeleteButtons
                     showBack={true}
                     backClick={() => navigate(-1)}
-                    editClick={() => console.log("edit clicked")}
                     id={selectedEntry ? selectedEntry.id : ""}
                   />
                 </HStack>

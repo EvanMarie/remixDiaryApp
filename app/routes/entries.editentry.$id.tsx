@@ -75,6 +75,13 @@ export async function action({ request }: { request: Request }) {
   } else {
     entryData.tags = [];
   }
+  if (Array.isArray(rawEntryData.tags)) {
+    entryData.tags = rawEntryData.tags; // If it's already an array of strings
+  } else if (typeof rawEntryData.tags === "string") {
+    entryData.tags = rawEntryData.tags.split(", ").map((tag) => tag.trim()); // Your existing logic
+  } else {
+    entryData.tags = []; // Fallback if no valid tags are provided
+  }
 
   // validation based on title length / existence
   if (entryData.title.trim().length < 5) {
@@ -164,6 +171,11 @@ export default function EditEntry() {
             <Form method="POST" style={{ width: "100%" }}>
               <VStack fontSize="lg" w="100%" position="relative">
                 <Input type="hidden" name="oldEntryId" value={entry.id} />
+                <Input
+                  type="hidden"
+                  name="tags"
+                  value={entry.tags.join(", ")}
+                />
                 <VStack
                   spacing={0}
                   w="100%"

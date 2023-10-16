@@ -44,3 +44,28 @@ export async function deleteEntryById(id: string) {
     throw error; // Rethrow if you want the caller to handle the error
   }
 }
+
+
+export async function searchEntries(searchTerm: string) {
+  try {
+    // Make sure the search term is a non-empty string
+    if (!searchTerm || typeof searchTerm !== 'string') {
+      throw new Error('Search term must be a valid, non-empty string.');
+    }
+
+    // Retrieve all stored entries
+    const storedEntries = await getStoredEntries();
+
+    // Filter entries based on the search term
+    const matchedEntries = storedEntries.filter((entry: Entry) => 
+      entry.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      entry.entry.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      entry.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+    );
+
+    return matchedEntries;
+  } catch (error) {
+    console.error('An error occurred during the search operation:', error);
+    throw error;
+  }
+}

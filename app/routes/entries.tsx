@@ -15,7 +15,6 @@ export async function loader() {
 
 export default function Entries() {
   const entries = useLoaderData<Entry[]>();
-
   return (
     <FadeIn>
       <Flex

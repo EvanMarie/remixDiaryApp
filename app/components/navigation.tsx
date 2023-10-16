@@ -5,9 +5,14 @@ import { IoDocumentsOutline } from "react-icons/io5/index.js";
 import { TfiThought } from "react-icons/tfi/index.js";
 import { darkGrayGrad, largeShadow } from "~/styles/customTheme";
 import { useNavigate } from "@remix-run/react";
+import { useWindowWidth } from "~/utils/useWindowWidth";
+import CustomIconButton from "./customIconButton";
 
 export default function Navigation() {
   const navigate = useNavigate();
+  const windowWidth = useWindowWidth();
+  const isMobile = windowWidth && windowWidth < 768;
+
   return (
     <Flex
       position="fixed"
@@ -37,14 +42,25 @@ export default function Navigation() {
             My Thoughts
           </Text>
         </HStack>
-        <HStack>
-          <CustomButton to="/entries" leftIcon={<IoDocumentsOutline />}>
-            Entries
-          </CustomButton>
-          <CustomButton to="/entries/newentry" leftIcon={<BsJournalPlus />}>
-            New
-          </CustomButton>
-        </HStack>
+        {isMobile ? (
+          <HStack>
+            <CustomIconButton
+              icon={<IoDocumentsOutline />}
+              aria-label="entries"
+            />
+
+            <CustomIconButton icon={<BsJournalPlus />} aria-label="new entry" />
+          </HStack>
+        ) : (
+          <HStack>
+            <CustomButton to="/entries" leftIcon={<IoDocumentsOutline />}>
+              Entries
+            </CustomButton>
+            <CustomButton to="/entries/newentry" leftIcon={<BsJournalPlus />}>
+              New
+            </CustomButton>
+          </HStack>
+        )}
       </HStack>
     </Flex>
   );
