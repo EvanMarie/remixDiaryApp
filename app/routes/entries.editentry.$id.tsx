@@ -1,9 +1,22 @@
-import { Box, Center, Flex, HStack, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Flex,
+  HStack,
+  Input,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { Form, useLoaderData, useNavigate } from "@remix-run/react";
 import { DeleteButton } from "~/components/editDeleteButtons";
 import { useEscapeBack } from "~/utils/escapeNav";
 import FadeIn from "~/components/fadeIn";
-import { Entry, getStoredEntries, storeEntries } from "~/data/entries";
+import {
+  Entry,
+  deleteEntryById,
+  getStoredEntries,
+  storeEntries,
+} from "~/data/entries";
 import {
   darkTealGrad,
   largeShadow,
@@ -37,6 +50,7 @@ export async function loader({ params }: { params: { id: string } }) {
 export async function action({ request }: { request: Request }) {
   const formData = await request.formData();
   const rawEntryData = Object.fromEntries(formData);
+  const originalId = rawEntryData.oldEntryId;
 
   if (
     typeof rawEntryData.title !== "string" ||
@@ -75,7 +89,14 @@ export async function action({ request }: { request: Request }) {
   await new Promise<void>((resolve, reject) =>
     setTimeout(() => resolve(), 500)
   );
-  return redirect("/entries");
+
+  try {
+    originalId && (await deleteEntryById(originalId as string));
+    return redirect("/entries");
+  } catch (error) {
+    const message = (error as Error).message;
+    return json({ status: "error", message }, { status: 500 });
+  }
 }
 
 export default function EditEntry() {
@@ -140,6 +161,7 @@ export default function EditEntry() {
             {" "}
             <Form method="POST" style={{ width: "100%" }}>
               <VStack fontSize="lg" w="100%" position="relative">
+                <Input type="hidden" name="oldEntryId" value={entry.id} />
                 <VStack
                   spacing={0}
                   w="100%"

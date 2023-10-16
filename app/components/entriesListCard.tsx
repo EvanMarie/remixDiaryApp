@@ -50,15 +50,13 @@ export function EntryCard({ entry, cardColor }: EntryCardProps) {
                 borderBottom="1px solid"
                 pb={2}
                 align="end"
-                onClick={(e) => e.stopPropagation()}
               >
                 <Text color="gray.300" textShadow={textShadow}>
                   {FormatDate(entry.id)}
                 </Text>
-                <EditDeleteButtons
-                  editClick={() => navigate(`/entries/editentry/${entry.id}`)}
-                  id={entry.id}
-                />
+                <Box onClick={(e) => e.stopPropagation()}>
+                  <EditDeleteButtons id={entry.id} />
+                </Box>
               </HStack>
               <Text
                 color="purple.200"

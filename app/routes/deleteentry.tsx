@@ -1,5 +1,4 @@
 import { ActionFunction, json, redirect } from "@remix-run/node";
-import { deleteEntryById } from "~/data/entries"; // Your existing delete function
 
 export let action: ActionFunction = async ({ request }) => {
   // Extract the entry ID from the request (e.g., from the URL or body)

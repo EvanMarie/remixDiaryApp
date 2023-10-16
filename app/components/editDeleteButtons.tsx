@@ -3,9 +3,10 @@ import CustomIconButton from "./customIconButton";
 import { BiEdit } from "react-icons/bi/index.js";
 import { MdDeleteForever } from "react-icons/md/index.js";
 import { RiArrowGoBackLine } from "react-icons/ri/index.js";
-import { useSubmit } from "@remix-run/react";
+import { useNavigate, useSubmit } from "@remix-run/react";
 
-export function EditButton({ editClick }: { editClick: () => void }) {
+export function EditButton({ id }: { id: string }) {
+  const navigate = useNavigate();
   return (
     <CustomIconButton
       aria-label="Edit entry"
@@ -13,7 +14,7 @@ export function EditButton({ editClick }: { editClick: () => void }) {
       h="30px"
       w="30px"
       size="23px"
-      onClick={editClick}
+      onClick={() => navigate(`/entries/editentry/${id}`)}
     />
   );
 }
@@ -48,19 +49,17 @@ export function BackButton({ backClick }: { backClick: () => void }) {
 interface EditDeleteButtonsProps {
   id?: string;
   showBack?: boolean;
-  editClick: () => void;
   backClick?: () => void;
 }
 
 export default function EditDeleteButtons({
   id,
   showBack = false,
-  editClick,
   backClick,
 }: EditDeleteButtonsProps) {
   return (
     <HStack spacing={3}>
-      {editClick && <EditButton editClick={editClick} />}
+      {id && <EditButton id={id} />}
       {id && <DeleteButton id={id} />}
       {showBack && backClick && <BackButton backClick={backClick} />}
     </HStack>

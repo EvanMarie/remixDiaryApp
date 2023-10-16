@@ -22,7 +22,7 @@ export default function Entries() {
         w="100%"
         justify="center"
         py={{ base: "10px", md: "20px", lg: "30px" }}
-        h="92vh"
+        h="90vh"
         overflowY="auto"
         sx={scrollBarStyles}
       >
