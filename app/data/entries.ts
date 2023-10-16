@@ -2,10 +2,12 @@ import fs from 'fs/promises';
 
 export type Entry = {
   id: string;
-    title: string;
-    tags: string[];
-    entry: string;
-    };
+  title: string;
+  tags: string[];
+  entry: string;
+  originalDate: string;
+  lastUpdated: string;
+};
 
 export async function getStoredEntries() {
   const rawFileContent = await fs.readFile('entries.json', { encoding: 'utf-8' });
@@ -32,10 +34,8 @@ export async function deleteEntryById(id: string) {
     if (entryIndex === -1) {
       throw new Error(`Entry with ID ${id} not found.`);
     }
-
     // Remove the entry from the array
     storedEntries.splice(entryIndex, 1);
-
     // Write the updated entries back to the file
     await storeEntries(storedEntries);
   } catch (error) {

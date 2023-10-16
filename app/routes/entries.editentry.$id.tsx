@@ -62,8 +62,10 @@ export async function action({ request }: { request: Request }) {
   const entryData: Entry = {
     id: new Date().toISOString(),
     tags: [],
-    title: rawEntryData.title,
-    entry: rawEntryData.content,
+    title: rawEntryData.title as string, // assert that it is a string
+    entry: rawEntryData.content as string,
+    originalDate: rawEntryData.originalDate as string,
+    lastUpdated: rawEntryData.lastUpdated as string,
   };
 
   if (rawEntryData.tags && typeof rawEntryData.tags === "string") {
@@ -217,7 +219,7 @@ export default function EditEntry() {
                         defaultValue={entry.entry}
                         onChange={handleContentChange}
                         isTextarea={true}
-                        textAreaHeight={{ base: "400px", sm: "425px" }}
+                        textAreaHeight={{ base: "340px", sm: "425px" }}
                       />
                     </Box>
                     <HStack w="100%" justify="end">

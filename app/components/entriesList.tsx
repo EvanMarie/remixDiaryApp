@@ -24,10 +24,12 @@ export default function EntriesList({ entries }: EntriesListProps) {
   return (
     <Wrap
       w="100%"
+      h="100%"
       maxW="1600px"
       px={4}
       spacing={6}
       justify="center"
+      pt={{ base: "15px", md: "10px" }}
       pb={isSafariMobile ? "130px" : "20px"}
     >
       {entries.map((entry, index) => {

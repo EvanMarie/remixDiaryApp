@@ -21,12 +21,13 @@ export default function Entries() {
       <Flex
         w="100%"
         justify="center"
-        py={{ base: "10px", md: "20px", lg: "30px" }}
-        h="90vh"
+        pt="12px"
+        pb={{ base: "10px", md: "30px" }}
+        h="100vh"
         overflowY="auto"
         sx={scrollBarStyles}
       >
-        <Flex justify="center" w="100%">
+        <Flex justify="center" w="100%" h="100%" pt="40px">
           {entries && entries.length > 0 ? (
             <EntriesList entries={entries} />
           ) : (

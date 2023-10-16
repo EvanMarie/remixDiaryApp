@@ -41,18 +41,16 @@ export async function action({ request }: { request: Request }) {
   const formData = await request.formData();
   const rawEntryData = Object.fromEntries(formData);
 
-  if (
-    typeof rawEntryData.title !== "string" ||
-    typeof rawEntryData.content !== "string"
-  ) {
-    throw new Error("Title and content must be strings");
-  }
+  // Create a current timestamp for this new entry
+  const currentTimestamp = new Date().toISOString();
 
   const entryData: Entry = {
-    id: new Date().toISOString(),
+    id: currentTimestamp, // the ID is the creation timestamp, which ensures uniqueness and chronological order
     tags: [],
-    title: rawEntryData.title,
-    entry: rawEntryData.content,
+    title: rawEntryData.title as string, // assert that it is a string
+    entry: rawEntryData.content as string,
+    originalDate: currentTimestamp, // set the originalDate as the current timestamp
+    lastUpdated: currentTimestamp, // since this is a new entry, lastUpdated is the same as the originalDate
   };
 
   if (rawEntryData.tags && typeof rawEntryData.tags === "string") {
@@ -132,7 +130,7 @@ const NewEntry: React.FC<NewEntryProps> = () => {
             rounded={radius}
             color="gray.100"
             onClick={(e) => e.stopPropagation()}
-            pt={{ base: "125px", md: "60px" }}
+            pt={{ base: "100px", md: "60px" }}
             pb="20px"
           >
             <Flex w="100%" maxW="800px" alignSelf="center">
@@ -149,7 +147,7 @@ const NewEntry: React.FC<NewEntryProps> = () => {
                 <VStack w="90%" spacing={{ base: 3, md: 6 }}>
                   <Box
                     position="absolute"
-                    top={{ base: "80px", md: "10px" }}
+                    top={{ base: "60px", md: "10px" }}
                     right="10px"
                   >
                     <BackButton backClick={() => navigate(-1)} />

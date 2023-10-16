@@ -32,7 +32,7 @@ export default function Navigation() {
           color="purple.200"
         >
           <TfiThought size="30px" />
-          <Text fontSize="2xl" fontWeight="bold">
+          <Text fontSize={{ base: "xl", sm: "2xl" }} fontWeight="bold">
             {" "}
             My Thoughts
           </Text>
