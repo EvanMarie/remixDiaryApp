@@ -44,13 +44,17 @@ export default function Navigation() {
         </HStack>
         {isMobile ? (
           <HStack>
-          
             <CustomIconButton
               icon={<IoDocumentsOutline />}
               aria-label="entries"
+              onClick={() => navigate("/entries")}
             />
 
-            <CustomIconButton icon={<BsJournalPlus />} aria-label="new entry" />
+            <CustomIconButton
+              icon={<BsJournalPlus />}
+              aria-label="new entry"
+              onClick={() => navigate("/entries/newentry")}
+            />
           </HStack>
         ) : (
           <HStack>

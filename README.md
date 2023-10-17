@@ -1,38 +1,58 @@
-# Welcome to Remix!
+---
 
-- [Remix Docs](https://remix.run/docs)
+# Dear Diary 📔 - a full stack Remix app!
 
-## Development
+Welcome to Dear Diary, your new favorite online diary application! With a focus on simplicity and beauty, this full-stack app provides an engaging platform for users to pen their thoughts, ideas, and memories. Tailored with a sleek UI, Diary Master isn't just another diary app; it's your daily companion that makes every journaling moment a delightful experience.
 
-From your terminal:
+## Features ✨
 
-```sh
-npm run dev
-```
+- **Effortless Journaling**: Easy-to-use interface for writing new diary entries.
+- **Titling Entries**: Organize your thoughts better by giving them a suitable title.
+- **Tagging**: Add relevant tags to your entries to categorize and reference them with ease.
+- **Editing on the Go**: Made a mistake or want to add more thoughts? Edit your entries anytime.
+- **Attractive UI**: Our app isn't just functional; it's also very appealing to work with.
+- **Full Stack Technology**: Robust back-end ensuring your entries are saved and retrieved swiftly.
 
-This starts your app in development mode, rebuilding assets on file changes.
+![diaryApp2-1](http://www.evanmarie.com/content/images/2023/10/diaryApp2-1.png)
 
-## Deployment
+![diaryApp3](http://www.evanmarie.com/content/images/2023/10/diaryApp3.png)
 
-First, build your app for production:
+![diaryApp4](http://www.evanmarie.com/content/images/2023/10/diaryApp4.png)
 
-```sh
-npm run build
-```
+![diaryApp5](http://www.evanmarie.com/content/images/2023/10/diaryApp5.png)
 
-Then run the app in production mode:
+## Getting Started 🚀
 
-```sh
-npm start
-```
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-Now you'll need to pick a host to deploy it to.
 
-### DIY
+### Installing
 
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
+A step-by-step series of examples that tell you how to get a development environment running:
 
-Make sure to deploy the output of `remix build`
+1. Clone the repo
+   ```sh
+   git clone https://github.com/EvanMarie/remixDiaryApp
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Run the application
+   ```sh
+   npm run start
+   ```
 
-- `build/`
-- `public/build/`
+
+## Built With 🛠️
+
+* [React.js](https://reactjs.org/) - The web framework used
+* [Node.js](https://nodejs.org/) - Back-end JavaScript runtime environment
+* [Chakra UI](https://www.chakra-ui.com) - Design
+
+
+## License 📄
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+---
